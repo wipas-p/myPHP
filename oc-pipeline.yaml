@@ -1,0 +1,68 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  creationTimestamp: '2018-10-29T04:11:41Z'
+  labels:
+    app: php-pipeline-example
+    name: php-pipeline
+    template: application-template-sample-pipeline
+  name: php-pipeline
+  namespace: default
+  resourceVersion: '3149059'
+  selfLink: /apis/build.openshift.io/v1/namespaces/default/buildconfigs/php-pipeline
+  uid: bd7d5233-db30-11e8-b775-08002748743c
+spec:
+  nodeSelector: {}
+  output: {}
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    git:
+      ref: master
+      uri: 'https://github.com/wipas-p/myPhp.git'
+    type: Git
+  strategy:
+    jenkinsPipelineStrategy:
+      jenkinsfile: |-
+        try {
+           timeout(time: 20, unit: 'MINUTES') {
+              node() {
+                  stage('build') {
+                    openshift.withCluster() {
+                       openshift.withProject() {
+                          def bld = openshift.startBuild('myphp')
+                          bld.untilEach {
+                            return it.object().status.phase == "Running"
+                          }
+                          bld.logs('-f')
+                       }  
+                    }
+                  }
+                  stage('deploy') {
+                    openshift.withCluster() {
+                      openshift.withProject() {
+                        def dc = openshift.selector('dc', 'myphp')
+                        openshiftDeploy(namespace: 'default', deploymentConfig: 'myphp')
+                        //dc.rollout().latest()
+                      }
+                    }
+                  }
+                }
+           }
+        } catch (err) {
+           echo "in catch block"
+           echo "Caught: ${err}"
+           currentBuild.result = 'FAILURE'
+           throw err
+        }          
+    type: JenkinsPipeline
+  triggers:
+    - github:
+        secret: secret101
+      type: GitHub
+    - generic:
+        secret: secret101
+      type: Generic
+status:
+  lastVersion: 7
