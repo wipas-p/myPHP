@@ -93,6 +93,6 @@ tr {
     
 </body>
 
-    update 2018/11/02 v1
+    update 2018/11/02 v1.1
 
 </html>
