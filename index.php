@@ -21,7 +21,10 @@ tr {
 </head>
 
 <body>
-
+    <br>
+    <a href="https://bsod.pw/?address=XLekzcqKTFrMWAhq6LFGyzTj4eZH8KNsK8">Check XDNA</a>
+    <a href="https://legacy.zpool.ca/?address=1G76MJZG4dGqtNbC2TfnABqQvBfQi4tuUi">Check BTC</a>
+        update 2018/11/15 v1.2
 <table style="width=100% align-items:center">
     <tr>
         <!-- BTC -->
