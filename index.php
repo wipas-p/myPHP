@@ -89,10 +89,13 @@ tr {
         <th><div class="coinmarketcap-currency-widget" data-currencyid="2140" data-base="USD" data-secondary="" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="true" data-stats="USD" data-statsticker="false"></div></th>
 
     </tr> 
-</table>
-    
+</table>    
+    <br>
+    <a href="https://bsod.pw/?address=XLekzcqKTFrMWAhq6LFGyzTj4eZH8KNsK8">Check XDNA</a>
+    <a href="https://legacy.zpool.ca/?address=1G76MJZG4dGqtNbC2TfnABqQvBfQi4tuUi">Check BTC</a>
+        update 2018/11/15 v1.2
 </body>
 
-    update 2018/11/02 v1.111
+
 
 </html>
