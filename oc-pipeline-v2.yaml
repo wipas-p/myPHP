@@ -1,0 +1,76 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  creationTimestamp: '2018-11-20T06:19:12Z'
+  labels:
+    app: php-pipeline-example
+    name: php-pipeline
+    template: application-template-sample-pipeline
+  name: php-pipeline
+  namespace: default
+  resourceVersion: '34120'
+  selfLink: /apis/build.openshift.io/v1/namespaces/default/buildconfigs/php-pipeline
+  uid: 3290a830-ec8c-11e8-9b03-08002748743c
+spec:
+  nodeSelector: {}
+  output: {}
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    git:
+      ref: master
+      uri: 'https://github.com/wipas-p/myPhp.git'
+    type: Git
+  strategy:
+    jenkinsPipelineStrategy:
+      jenkinsfile: |-
+        try {
+           timeout(time: 20, unit: 'MINUTES') {
+              node() {
+                  stage('build') {
+                    openshift.withCluster() {
+                       openshift.withProject() {
+                          def bld = openshift.startBuild('myphp')
+                          bld.untilEach {
+                            return it.object().status.phase == "Running"
+                          }
+                          bld.logs('-f')
+                       }  
+                    }
+                  }
+                  stage('scan code') {
+                      echo "scan code"
+                  }
+                  stage('test') {
+                      echo "test code"
+                  }
+                  stage('deploy') {
+                    openshift.withCluster() {
+                      openshift.withProject() {
+                        def dc = openshift.selector('dc', 'myphp')
+                        openshiftDeploy(namespace: 'default', deploymentConfig: 'myphp')
+                        //dc.rollout().latest()
+                      }
+                    }
+                  }
+                }
+           }
+        } catch (err) {
+           echo "in catch block"
+           echo "Caught: ${err}"
+           currentBuild.result = 'FAILURE'
+           throw err
+        }          
+    type: JenkinsPipeline
+  triggers:
+    - github:
+        secretReference:
+          name: myphp-secret
+      type: GitHub
+    - github:
+        secretReference:
+          name: myphp1
+      type: GitHub
+status:
+  lastVersion: 15
