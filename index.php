@@ -25,7 +25,8 @@ tr {
     <a href="https://bsod.pw/?address=XLekzcqKTFrMWAhq6LFGyzTj4eZH8KNsK8" target="_blank">Check XDNA | </a>
     <a href="https://legacy.zpool.ca/?address=1G76MJZG4dGqtNbC2TfnABqQvBfQi4tuUi" target="_blank">Check BTC | </a>
     <a href="https://pool.argoneum.net/?address=MLH9FAoTcARqbaH2At3EFEZH3WABWAjyfK" target="_blank">Check AGM </a>
-        update 2018/11/15 v1.2
+    <a href="https://etc.nanopool.org/account/0x719e58f6adae9dca23f02bff1b1ffb5f015e1f9f target="_blank"> Check ETC </a>
+        update 2018/11/20 v1.3
 <table style="width=100% align-items:center">
     <tr>
         <!-- BTC -->
