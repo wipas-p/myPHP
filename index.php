@@ -113,9 +113,9 @@ a:active {
     </tr> 
 </table>    
     <br>
-    <a href="https://bsod.pw/?address=XLekzcqKTFrMWAhq6LFGyzTj4eZH8KNsK8">Check XDNA</a>
+    <a href="https://miningpoolstats.stream">PoolStats</a>
     <a href="https://legacy.zpool.ca/?address=1G76MJZG4dGqtNbC2TfnABqQvBfQi4tuUi">Check BTC</a>
-        update 2018/11/15 v1.2
+
 </body>
 
 
