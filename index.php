@@ -116,7 +116,7 @@ a:active {
     <a href="https://miningpoolstats.stream" target="_blank">PoolStats</a>
     <a href="https://legacy.zpool.ca/?address=1G76MJZG4dGqtNbC2TfnABqQvBfQi4tuUi" target="_blank">Check BTC</a>
     <a href="https://www.tradingview.com/script/iHgMOaj1-inwCoin-s-CDC-ActionZone-V-2-Strategy-ATR/?fbclid=IwAR2CkRuxw6ByJdSfQ0pbCiYSl1fIz-eJBLomKSlPJApXmkW2kBzqGlP1L2M" target="_blank">BTC Graph</a>
-
+    <a href="https://coin360.io" target="_blank">Coin360.io</a>
 </body>
 
 
